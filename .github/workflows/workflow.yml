@@ -33,14 +33,10 @@ jobs:
         with: 
           name: assets-for-download
           path: downloads
- job1:
+  job1:
     runs-on: ubuntu-latest
-    # Map a step output to a job output
-    outputs:
-      output1: ${{ steps.step1.outputs.test }}
-      output2: ${{ steps.step2.outputs.test }}
     steps:
       - id: step1
-        run: echo "::set-output name=test::hello"
+        run: echo "hi there"
       - id: step2
-        run: echo "::set-output name=test::world"
+        run: echo "hello there"
