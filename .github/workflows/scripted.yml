@@ -1,0 +1,27 @@
+name: luke-engle/Scripted
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      FOO:
+        required: false
+        description: foo bar baz
+        default: bar
+env:
+  BAR: BAZ
+jobs:
+  foo:
+    name: foo
+    if: "foo" != "bar"
+    runs-on: ubuntu-latest
+    steps:
+    - name: echo message
+      run: echo hello
+      env:
+        FOO: BAR
+      if: '"thing" == "foo"'
+    - name: echo message
+      run: echo else
+      env:
+        FOO: BAR
+      if: '!("thing" == "foo")'
