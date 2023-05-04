@@ -15,28 +15,12 @@ on:
   
 
 jobs:
-  archive-build-artifacts:
-    runs-on: ubuntu-latest
-    steps:
-
-      - name: Step 1 - Create a temporary artifact downloads folder
-        run: mkdir downloads
-        
-      - name: step 2 - Add artifacts to publish to the temp folder
-        run: |
-          cd downloads
-          echo 'delta'    > delta.html
-          cd ..
-    
-      - name: Step 3 - Use the Upload Artifact GitHub Action
-        uses: actions/upload-artifact@v2
-        with: 
-          name: assets-for-download
-          path: downloads
   job1:
     runs-on: ubuntu-latest
+    if: "${{ 'foo' == 'foo' }}"
     steps:
       - id: step1
+        if: "${{ 'foo' == 'bar' }}"
         run: echo "hi there"
       - id: step2
         run: echo "hello there"
